@@ -14,12 +14,17 @@ module Justicecz
 
     private
 
+    def result_collection
+      Justicecz::Html::ResultList.collection(@body)
+    end
+
     def parse_response
-      data_headers = @body.search('table.result-details th').children
-      return {} if data_headers.empty?
-      {}.tap do |parsed_result|
-        response_table_headers.each_with_index do |header, index|
-          parsed_result[header] = response_table_data[index]
+      {}.tap do |collection|
+        index = 0
+        result_collection.each do |result|
+          next unless Justicecz::Html::ResultLine.line(result)
+          collection[index] = Justicecz::Html::ResultLine.line(result)
+          index += 1
         end
       end
     end
