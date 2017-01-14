@@ -1,0 +1,38 @@
+AllCops:
+  TargetRubyVersion: 2.3
+  Exclude:
+    - 'db/**/*'
+    - 'bin/**/*'
+    - 'app/views/contacts/*.json.jbuilder'
+    - 'config/**/*'
+  CacheRootDirectory: '../../tmp'
+
+Rails:
+  Enabled: true
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/GuardClause:
+  Enabled: false
+
+Style/WordArray:
+  MinSize: 3
+
+Style/SymbolProc:
+  IgnoredMethods: validate
+
+Style/Documentation:
+  Enabled: false
+
+Style/AndOr:
+  EnforcedStyle: conditionals
+
+Metrics/LineLength:
+  Max: 89
+
+Style/AlignHash:
+  EnforcedLastArgumentHashStyle: 'ignore_implicit'
+
+Style/AlignParameters:
+  Enabled: false
