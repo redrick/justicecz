@@ -1,5 +1,7 @@
 # Justicecz
 
+[![Build Status](https://travis-ci.org/redrick/justicecz.svg?branch=master)](https://travis-ci.org/redrick/justicecz)
+
 COMMING SOON
 
 SDK for accessing data from [justice.cz](https://or.justice.cz/ias/ui/rejstrik-$firma)
