@@ -26,15 +26,5 @@ module Justicecz
         @collection << Justicecz::Html::ResultLine.line(result)
       end
     end
-
-    def response_table_headers
-      @body.search('table.result-details th').children.map(&:text)
-    end
-
-    def response_table_data
-      @body.search('table.result-details td').children.map(&:text).map do |a|
-        a.gsub(/\t|\n/, '').strip
-      end.reject(&:empty?)
-    end
   end
 end

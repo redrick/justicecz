@@ -3,6 +3,7 @@ module Justicecz
     class ParamsLookup
       PARAMS_MAP = {
         title: 'Název subjektu',
+        misc: 'Ostatní informace',
         ico: 'IČO',
         file_number: 'Spisová značka',
         registered_at: 'Den zápisu',

@@ -1,7 +1,7 @@
 module Justicecz
   module Entities
     class Company
-      ATTRIBUTES = %i(title ico file_number registered_at residence)
+      ATTRIBUTES = %i(title misc ico file_number registered_at residence)
 
       attr_accessor(*ATTRIBUTES)
 

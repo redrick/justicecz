@@ -19,21 +19,28 @@ module Justicecz
       private
 
       def parse_line
-        headers.each_with_index do |header, index|
+        headers.each_with_index do |element, index|
+          header = to_header(element)
           key = ::Justicecz::Misc::ParamsLookup.by_value(header)
-          @company.public_send("#{key}=", data[index])
+          data = element.next_element
+          @company.public_send("#{key}=", to_data(data))
         end
       end
 
-      def headers
-        @result_line.search('th').children.map(&:text)
-          .map { |h| h.gsub(/:$/, '') }
+      def to_header(element)
+        element.children.text.gsub(/:$/, '')
       end
 
-      def data
-        @result_line.search('td').children.map(&:text).map do |a|
-          a.gsub(/\t|\n/, '').strip
+      def to_data(element)
+        data = element.children.map(&:text).map do |text|
+          text.gsub(/\t|\n/, '').strip
         end.reject(&:empty?)
+        @company.misc = data.slice(1..-1).join(', ') if data.slice(1..-1).count.positive?
+        data.first
+      end
+
+      def headers
+        @result_line.search('th')
       end
     end
   end
