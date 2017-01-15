@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ['Andrej Antas']
   spec.email         = ['andrej@antas.cz']
   spec.summary       = 'SDK for quering or.justice.cz'
-  spec.description   = 'SDK for quering or.justice.cz'
-  spec.homepage      = ''
+  spec.description   = 'SDK for quering the hell out of or.justice.cz HTML pages since there is no API available'
+  spec.homepage      = 'https://github.com/redrick/justicecz'
   spec.license       = 'MIT'
 
   spec.files         = `git ls-files -z`.split("\x0")
