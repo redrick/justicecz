@@ -1,7 +1,8 @@
 module Justicecz
   class HtmlParser
     def initialize(body)
-      @body = Nokogiri::HTML(body)
+      @body = ::Nokogiri::HTML(body)
+      @collection = ::Justicecz::Entities::List.new
     end
 
     def self.parse(body)
@@ -10,6 +11,7 @@ module Justicecz
 
     def parse
       parse_response
+      @collection
     end
 
     private
@@ -19,13 +21,9 @@ module Justicecz
     end
 
     def parse_response
-      {}.tap do |collection|
-        index = 0
-        result_collection.each do |result|
-          next unless Justicecz::Html::ResultLine.line(result)
-          collection[index] = Justicecz::Html::ResultLine.line(result)
-          index += 1
-        end
+      result_collection.each do |result|
+        next unless Justicecz::Html::ResultLine.line(result)
+        @collection << Justicecz::Html::ResultLine.line(result)
       end
     end
 
