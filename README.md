@@ -48,17 +48,10 @@ it returns an array of results each now encapsulated in `Justicecz::Entities::Co
 
 with which you can now easily work to get required data :) (see more on methods available below...)
 
-### Jistice::Query public API
+
+### Justicecz::Query public API
 
 With this class you can query like this:
-
-```ruby
-
-```
-
-### Justicecz::Entities::List public API
-
-This class only offers:
 
 ```ruby
 collection = Justicecz::Query.query(nazev: 'NAV')
@@ -79,7 +72,7 @@ tested params in search for now are:
 
 REQUIRED FIELDS (one of) -> `nazev` or `ico`
 
-Allowed values for `court` params in search hash:
+Allowed values for `soud` params in search hash:
 
 ```
 "MSPH" => Městský soud v Praze
@@ -91,7 +84,16 @@ Allowed values for `court` params in search hash:
 "KSOS" => Krajský soud v Ostravě
 ```
 
-### Justicecz::Entities::Company List
+### Jistice::Entities::List public API
+
+This class only offers:
+
+```ruby
+collection = Justicecz::Query.query(nazev: 'NAV')
+collection.items # array of items
+```
+
+### Justicecz::Entities::Company public API
 
 This class offers these methods to access company data fetched:
 
@@ -101,7 +103,7 @@ item = collection.items.first
 item.title          # "NAVLOG s.r.o."
 item.misc           # Miscellaneous -> e.g. "V konkursu, Zahájeno insolvenční řízení na návrh věřitele"
 item.ico            # "29453259"
-item.file_numebr    # "C 54544 vedená u Krajského soudu v Ostravě"
+item.file_number    # "C 54544 vedená u Krajského soudu v Ostravě"
 item.registered_at  # "26. září 2012"
 item.residence      # "Ztracená 253/4, 779 00 Olomouc"
 ```
@@ -114,7 +116,7 @@ item = collection.items.first
 item.title_full          # "Název subjektu: NAVLOG s.r.o."
 item.misc_full           # Miscellaneous -> e.g. "Ostatní informace: V konkursu, Zahájeno insolvenční řízení na návrh věřitele"
 item.ico_full            # "IČO: 29453259"
-item.file_numebr_full    # "Spisová značka: C 54544 vedená u Krajského soudu v Ostravě"
+item.file_number_full    # "Spisová značka: C 54544 vedená u Krajského soudu v Ostravě"
 item.registered_at_full  # "Den zápis: u26. září 2012"
 item.residence_full      # "Sídlo: Ztracená 253/4, 779 00 Olomouc"
 ```
@@ -127,7 +129,7 @@ item = collection.items.first
 item.title_header          # "Název subjektu"
 item.misc_header           # "Ostatní informace"
 item.ico_header            # "IČO"
-item.file_numebr_header    # "Spisová značka"
+item.file_number_header    # "Spisová značka"
 item.registered_at_header  # "Den zápis"
 item.residence_header      # "Sídlo"
 ```
